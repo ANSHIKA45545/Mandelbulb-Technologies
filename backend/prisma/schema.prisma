@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  boards       Board[]
+  tasks        Task[]
+
+  @@map("users")
+}
+
+model Board {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  ownerId     String   @map("owner_id")
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  tasks       Task[]
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([ownerId])
+  @@map("boards")
+}
+
+model Task {
+  id              String    @id @default(uuid())
+  title           String
+  description     String?
+  status          TaskStatus @default(TODO)
+  priority        Priority   @default(MEDIUM)
+  dueDate         DateTime?  @map("due_date")
+  estimatedEffort String?    @map("estimated_effort")
+  position        Int        @default(0)
+  boardId         String     @map("board_id")
+  board           Board      @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  ownerId         String     @map("owner_id")
+  owner           User       @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+
+  @@index([boardId])
+  @@index([ownerId])
+  @@map("tasks")
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
