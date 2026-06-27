@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/index.js",
     "start": "node src/index.js",
+    "dev": "node src/index.js",
     "db:start": "prisma dev --name taskflow --detach",
     "db:sync": "node scripts/sync-db-url.js",
     "db:setup": "npm run db:start && node scripts/wait-and-setup.js",
