@@ -25,17 +25,17 @@ model Board {
   title       String
   description String?
   ownerId     String   @map("owner_id")
-  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  tasks       Task[]
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  tasks       Task[]
 
   @@index([ownerId])
   @@map("boards")
 }
 
 model Task {
-  id              String    @id @default(uuid())
+  id              String     @id @default(uuid())
   title           String
   description     String?
   status          TaskStatus @default(TODO)
@@ -44,11 +44,11 @@ model Task {
   estimatedEffort String?    @map("estimated_effort")
   position        Int        @default(0)
   boardId         String     @map("board_id")
-  board           Board      @relation(fields: [boardId], references: [id], onDelete: Cascade)
   ownerId         String     @map("owner_id")
-  owner           User       @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   createdAt       DateTime   @default(now()) @map("created_at")
   updatedAt       DateTime   @updatedAt @map("updated_at")
+  board           Board      @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  owner           User       @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   @@index([boardId])
   @@index([ownerId])
