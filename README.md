@@ -26,7 +26,7 @@ A full-stack task and project management application — a lightweight Trello/As
 
 ## Screenshots
 
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/98d4c96a-83fc-4bfe-b1c9-2f08c276b38a" />
+<img width="1920" height="1020" alt="TaskFlow — Project Management - Google Chrome 27-06-2026 22_21_51" src="https://github.com/user-attachments/assets/dc184eb1-e7ba-4f93-93f8-6df629ee7efa" />
 
 
 
