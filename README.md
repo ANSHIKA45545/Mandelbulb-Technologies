@@ -39,7 +39,7 @@ A full-stack task and project management application — a lightweight Trello/As
 - **Database** — one of:
   - **Easiest (no install):** Prisma local Postgres via `npm run db:start` (built into backend)
   - **Docker:** `docker compose up -d` from project root
-  - **Cloud:** Free [Neon](https://neon.tech) or [Supabase](https://supabase.com) PostgreSQL
+  - **Cloud:** Free [Neon](https://neon.tech)  PostgreSQL
 
 ### 1. Clone & install
 
