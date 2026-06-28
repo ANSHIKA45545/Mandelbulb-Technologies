@@ -65,3 +65,12 @@ cp .env.example .env
 npm install
 npm run dev
 ```
+
+
+## 🔗 Project Links
+
+| Link Type | Link | Purpose |
+|-----------|------|---------|
+| **Frontend (Vercel)** | [Live Demo](https://mandelbulb-technologies.vercel.app) | Live application for end users |
+| **Backend (Render)** | [Backend API](https://mandelbulb-technologies.onrender.com) | REST API and backend services |
+| **GitHub Repository** | [Source Code](https://github.com/ANSHIKA45545/Mandelbulb-Technologies) | Complete source code and project documentation |
